@@ -16,6 +16,22 @@ const CardSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  limit: {
+    type: Number,
+    required: true,
+  },
+  currentDebt: {
+    type: Number,
+    required: true,
+  },
+  remainingDebt: {
+    type: Number,
+    required: true,
+  },
+  debitDate: {
+    type: Date,
+    required: true,
+  },
 });
 const Card = mongoose.model("Card", CardSchema);
 module.exports = Card;

@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const Card = require("./models/cards.model");
 const cardRoute = require("./routes/card.route");
+const paymentRoute = require("./routes/payment.route");
 require('dotenv').config();
 
 const app = express();
@@ -14,9 +14,10 @@ mongoose.connect(process.env.MONGO_URI)
       console.log("Server is running on http://localhost:3000");
     });
   })
-  .catch(() => {
-    console.log("connection failed!");
+  .catch((error) => {
+    console.log("connection failed!",error);
   });
 
  // routes
  app.use ("/api/cards", cardRoute)
+ app.use ("/api/payments", paymentRoute)

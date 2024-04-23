@@ -27,4 +27,13 @@ const getCardById = async (req, res) => {
   }
 };
 
-module.exports = { createCard, getCards, getCardById };
+const deleteCardById = async (req, res) => {
+  try {
+    const card = await Card.findByIdAndDelete(req.params.id);
+    res.status(200).json("Card deleted successfully");
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+}
+
+module.exports = { createCard, getCards, getCardById, deleteCardById };
