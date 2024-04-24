@@ -34,6 +34,23 @@ const deleteCardById = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-}
+};
 
-module.exports = { createCard, getCards, getCardById, deleteCardById };
+const updateCardDebt = async (cardId, amount) => {
+  try {
+    const card = await Card.findById(cardId);
+    card.currentDebt += amount;
+    await card.save();
+    console.log("Card debt updated successfully", card);
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+module.exports = {
+  createCard,
+  getCards,
+  getCardById,
+  deleteCardById,
+  updateCardDebt,
+};
