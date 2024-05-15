@@ -47,10 +47,22 @@ const updateCardDebt = async (cardId, amount) => {
   }
 };
 
+const updateCardLimit = async (req, res) => {
+  try {
+    const card = await Card.findById(req.body.id);
+    card.limit = req.body.amount;
+    await card.save();
+    res.status(200).json(card);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   createCard,
   getCards,
   getCardById,
   deleteCardById,
   updateCardDebt,
+  updateCardLimit,
 };
