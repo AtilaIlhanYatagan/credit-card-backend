@@ -58,6 +58,15 @@ const updateCardLimit = async (req, res) => {
   }
 };
 
+const payCardDebt = async (req, res) => {
+    try {
+      updateCardDebt(req.body.id, -req.body.amount);
+      res.status(200).json("card debt updated successfully");
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };
+
 module.exports = {
   createCard,
   getCards,
@@ -65,4 +74,5 @@ module.exports = {
   deleteCardById,
   updateCardDebt,
   updateCardLimit,
+  payCardDebt,
 };

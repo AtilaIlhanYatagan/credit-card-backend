@@ -5,7 +5,8 @@ const {
   getCards,
   getCardById,
   deleteCardById,
-  updateCardLimit
+  updateCardLimit,
+  payCardDebt
 } = require("../controllers/card.controller");
 
 router.post("/", createCard);
@@ -13,5 +14,6 @@ router.get("/", getCards);
 router.get("/:id", getCardById);
 router.delete("/:id", deleteCardById);
 router.post("/updateCardLimit", updateCardLimit);
+router.post("/payCardDebt", payCardDebt);
 
 module.exports = router;
